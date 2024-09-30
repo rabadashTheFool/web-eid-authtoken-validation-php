@@ -99,7 +99,7 @@ class SubjectCertificateNotRevokedValidatorTest extends TestCase
         $this->expectException(UserCertificateOCSPCheckFailedException::class);
         $this->expectExceptionMessage("User certificate revocation check has failed: The requested URL returned error: 404");
 
-        $ocspServiceProvider = OcspServiceMaker::getDesignatedOcspServiceProvider(true, "https://web-eid-test.free.beeceptor.com");
+        $ocspServiceProvider = OcspServiceMaker::getDesignatedOcspServiceProvider(true, "http://demo.sk.ee/ocsps");
         $validator = new SubjectCertificateNotRevokedValidator($this->trustedValidator, self::$ocspClient, $ocspServiceProvider);
         $validator->validate($this->estEid2018Cert);
     }
